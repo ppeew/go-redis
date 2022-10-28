@@ -73,7 +73,7 @@ func (handler *RespHandler) Handler(ctx context.Context, conn net.Conn) {
 		reply, ok := payload.Data.(*reply.MultiBulkReply)
 		if !ok {
 			logger.Error("require multi bulk reply")
-			return
+			continue
 		}
 		result := handler.db.Exec(client, reply.Args)
 		if result != nil {
