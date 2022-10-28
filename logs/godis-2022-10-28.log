@@ -38,3 +38,6 @@
 [INFO][server.go:59] 2022/10/28 17:03:15 accept link
 [INFO][server.go:27] 2022/10/28 17:22:05 start listener
 [INFO][server.go:59] 2022/10/28 17:22:13 accept link
+[INFO][server.go:27] 2022/10/28 17:22:42 start listener
+[INFO][server.go:42] 2022/10/28 17:22:43 shutting down
+[INFO][handler.go:85] 2022/10/28 17:22:43 handler shutting down

@@ -117,7 +117,7 @@ func parse0(reader io.Reader, ch chan *Payload) {
 			if state.Finished() {
 				var result resp.Reply
 				if state.msgType == '*' {
-					result = reply.MultiBulkReply{state.args}
+					result = reply.MakeMultiBulkReply(state.args)
 				} else if state.msgType == '$' {
 					result = reply.MakeBulkReply(state.args[0])
 				}
