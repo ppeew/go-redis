@@ -30,7 +30,7 @@ type MultiBulkReply struct {
 	Args [][]byte
 }
 
-func (b *MultiBulkReply) ToBytes() []byte {
+func (b MultiBulkReply) ToBytes() []byte {
 	argLen := len(b.Args)
 	var buf bytes.Buffer
 	buf.WriteString("*" + strconv.Itoa(argLen) + CRLF)

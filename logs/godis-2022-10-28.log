@@ -41,3 +41,19 @@
 [INFO][server.go:27] 2022/10/28 17:22:42 start listener
 [INFO][server.go:42] 2022/10/28 17:22:43 shutting down
 [INFO][handler.go:85] 2022/10/28 17:22:43 handler shutting down
+[INFO][server.go:27] 2022/10/28 17:25:33 start listener
+[INFO][server.go:59] 2022/10/28 17:25:39 accept link
+[ERROR][handler.go:75] 2022/10/28 17:25:42 require multi bulk reply
+[ERROR][handler.go:75] 2022/10/28 17:25:42 require multi bulk reply
+[ERROR][handler.go:75] 2022/10/28 17:25:42 require multi bulk reply
+[ERROR][handler.go:75] 2022/10/28 17:25:42 require multi bulk reply
+[ERROR][handler.go:75] 2022/10/28 17:25:47 require multi bulk reply
+[ERROR][handler.go:75] 2022/10/28 17:25:47 require multi bulk reply
+[ERROR][handler.go:75] 2022/10/28 17:25:47 require multi bulk reply
+[ERROR][handler.go:75] 2022/10/28 17:25:47 require multi bulk reply
+[INFO][server.go:42] 2022/10/28 17:27:11 shutting down
+[INFO][handler.go:88] 2022/10/28 17:27:11 handler shutting down
+[INFO][server.go:27] 2022/10/28 17:27:12 start listener
+[INFO][server.go:59] 2022/10/28 17:27:15 accept link
+[INFO][server.go:42] 2022/10/28 19:01:57 shutting down
+[INFO][handler.go:88] 2022/10/28 19:01:57 handler shutting down
