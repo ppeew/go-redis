@@ -44,7 +44,7 @@ func (b MultiBulkReply) ToBytes() []byte {
 	return buf.Bytes()
 }
 
-func MakeMulitBulkReply(arg [][]byte) *MultiBulkReply {
+func MakeMultiBulkReply(arg [][]byte) *MultiBulkReply {
 	return &MultiBulkReply{Args: arg}
 }
 
