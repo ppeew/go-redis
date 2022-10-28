@@ -13,5 +13,3 @@ type Database interface {
 type DataEntity struct {
 	Data interface{}
 }
-
-//d *Database database.Database
