@@ -2,11 +2,11 @@ package wildcard
 
 const (
 	normal     = iota
-	all        //*
-	any        //?
-	setSymbol  //[]
-	rangSymbol //[a-b]
-	negSymbol  //[^a]
+	all        // *
+	any        // ?
+	setSymbol  // []
+	rangSymbol // [a-b]
+	negSymbol  // [^a]
 )
 
 type item struct {
@@ -17,37 +17,38 @@ type item struct {
 
 func (i *item) contains(c byte) bool {
 	if i.typeCode == setSymbol {
-		ok := i.set[c]
+		_, ok := i.set[c]
 		return ok
 	} else if i.typeCode == rangSymbol {
-		ok := i.set[c]
-		if ok {
-			var (
-				min uint8 = 255
-				max uint8 = 0
-			)
-			for k := range i.set {
-				if min > k {
-					min = k
-				}
-				if max < k {
-					max = k
-				}
-			}
-			return c >= min && c <= max
+		if _, ok := i.set[c]; ok {
+			return true
 		}
-		return !ok
+		var (
+			min uint8 = 255
+			max uint8 = 0
+		)
+		for k := range i.set {
+			if min > k {
+				min = k
+			}
+			if max < k {
+				max = k
+			}
+		}
+		return c >= min && c <= max
 	} else {
-		ok := i.set[c]
+		_, ok := i.set[c]
 		return !ok
 	}
 }
 
+// Pattern represents a wildcard pattern
 type Pattern struct {
 	items []*item
 }
 
-func compilePattern(src string) *Pattern {
+// CompilePattern convert wildcard string to Pattern
+func CompilePattern(src string) *Pattern {
 	items := make([]*item, 0)
 	escape := false
 	inSet := false
@@ -70,9 +71,61 @@ func compilePattern(src string) *Pattern {
 			} else {
 				set[c] = true
 			}
+		} else if c == ']' {
+			if inSet {
+				inSet = false
+				typeCode := setSymbol
+				if _, ok := set['-']; ok {
+					typeCode = rangSymbol
+					delete(set, '-')
+				}
+				if _, ok := set['^']; ok {
+					typeCode = negSymbol
+					delete(set, '^')
+				}
+				items = append(items, &item{typeCode: typeCode, set: set})
+			} else {
+				items = append(items, &item{typeCode: normal, character: c})
+			}
+		} else {
+			if inSet {
+				set[c] = true
+			} else {
+				items = append(items, &item{typeCode: normal, character: c})
+			}
 		}
 	}
 	return &Pattern{
 		items: items,
 	}
+}
+
+// IsMatch returns whether the given string matches pattern
+func (p *Pattern) IsMatch(s string) bool {
+	if len(p.items) == 0 {
+		return len(s) == 0
+	}
+	m := len(s)
+	n := len(p.items)
+	table := make([][]bool, m+1)
+	for i := 0; i < m+1; i++ {
+		table[i] = make([]bool, n+1)
+	}
+	table[0][0] = true
+	for j := 1; j < n+1; j++ {
+		table[0][j] = table[0][j-1] && p.items[j-1].typeCode == all
+	}
+	for i := 1; i < m+1; i++ {
+		for j := 1; j < n+1; j++ {
+			if p.items[j-1].typeCode == all {
+				table[i][j] = table[i-1][j] || table[i][j-1]
+			} else {
+				table[i][j] = table[i-1][j-1] &&
+					(p.items[j-1].typeCode == any ||
+						(p.items[j-1].typeCode == normal && uint8(s[i-1]) == p.items[j-1].character) ||
+						(p.items[j-1].typeCode >= setSymbol && p.items[j-1].contains(s[i-1])))
+			}
+		}
+	}
+	return table[m][n]
 }
