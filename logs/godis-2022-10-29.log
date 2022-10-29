@@ -4,3 +4,16 @@
 [INFO][handler.go:86] 2022/10/29 10:22:31 handler shutting down
 [INFO][handler.go:54] 2022/10/29 10:22:31 connection closed: 127.0.0.1:58947
 [INFO][handler.go:86] 2022/10/29 10:22:31 handler shutting down
+[INFO][server.go:27] 2022/10/29 11:09:30 start listener
+[INFO][server.go:59] 2022/10/29 11:09:52 accept link
+[INFO][server.go:42] 2022/10/29 11:21:01 shutting down
+[INFO][handler.go:86] 2022/10/29 11:21:01 handler shutting down
+[INFO][handler.go:54] 2022/10/29 11:21:01 connection closed: 127.0.0.1:61962
+[INFO][handler.go:86] 2022/10/29 11:21:01 handler shutting down
+[WARN][aof.go:97] 2022/10/29 11:21:03 open appendonly.aof: The system cannot find the file specified.
+[INFO][server.go:27] 2022/10/29 11:21:03 start listener
+[INFO][server.go:59] 2022/10/29 11:21:15 accept link
+[INFO][server.go:42] 2022/10/29 11:44:31 shutting down
+[INFO][handler.go:86] 2022/10/29 11:44:31 handler shutting down
+[INFO][handler.go:54] 2022/10/29 11:44:31 connection closed: 127.0.0.1:62428
+[INFO][handler.go:86] 2022/10/29 11:44:31 handler shutting down

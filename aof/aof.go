@@ -79,8 +79,8 @@ func (handler *AofHandler) handleAof() {
 				continue // skip this command
 			}
 			handler.currentDB = p.dbIndex
-			handler.currentDB = p.dbIndex
 		}
+
 		data := reply.MakeMultiBulkReply(p.cmdLine).ToBytes()
 		_, err := handler.aofFile.Write(data)
 		if err != nil {
@@ -99,6 +99,7 @@ func (handler *AofHandler) LoadAof() {
 	}
 	defer file.Close()
 	ch := parser.ParseStream(file)
+
 	fakeConn := &connection.Connection{} // only used for save dbIndex
 	for p := range ch {
 		if p.Err != nil {

@@ -29,10 +29,12 @@ func main() {
 	} else {
 		config.SetupConfig(configFile)
 	}
-	tcp.ListenAndServeWithSignal(
+	err = tcp.ListenAndServeWithSignal(
 		&tcp.Config{
 			Address: fmt.Sprintf("%s:%d", config.Properties.Bind, config.Properties.Port),
 		},
 		handler.MakeHandler())
-
+	if err != nil {
+		logger.Error(err)
+	}
 }

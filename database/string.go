@@ -3,6 +3,7 @@ package database
 import (
 	"go-redis/interface/database"
 	"go-redis/interface/resp"
+	"go-redis/lib/utils"
 	"go-redis/resp/reply"
 )
 
@@ -25,10 +26,11 @@ func execSet(db *DB, args [][]byte) resp.Reply {
 		Data: value,
 	}
 	db.PutEntity(key, entity)
+	db.addAof(utils.ToCmdLine2("set", args...))
 	return reply.MakeOkReply()
 }
 
-// SETNx k1 v
+// SETNX k1 v
 func execSetnx(db *DB, args [][]byte) resp.Reply {
 	key := string(args[0])
 	value := args[1]
@@ -36,6 +38,7 @@ func execSetnx(db *DB, args [][]byte) resp.Reply {
 		Data: value,
 	}
 	result := db.PutIfAbsent(key, entity)
+	db.addAof(utils.ToCmdLine2("setnx", args...))
 	return reply.MakeIntReply((int64(result)))
 }
 
@@ -48,6 +51,7 @@ func execGetSet(db *DB, args [][]byte) resp.Reply {
 	if !exists {
 		return reply.MakeNullBulkReply()
 	}
+	db.addAof(utils.ToCmdLine2("getset", args...))
 	return reply.MakeBulkReply(entity.Data.([]byte))
 }
 
