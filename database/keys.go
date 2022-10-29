@@ -52,7 +52,7 @@ func execType(db *DB, args [][]byte) resp.Reply {
 	case []byte:
 		return reply.MakeStatusReply("string")
 	}
-	return &reply.UnkownErrReply{}
+	return &reply.UnknownErrReply{}
 }
 
 // RENAME k1 k2

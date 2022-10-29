@@ -1,15 +1,15 @@
 package reply
 
-type UnkownErrReply struct {
+type UnknownErrReply struct {
 }
 
 var unkownErrReply = []byte("-Err unknown\r\n")
 
-func (r *UnkownErrReply) Error() string {
+func (r *UnknownErrReply) Error() string {
 	return "unkown err"
 }
 
-func (r *UnkownErrReply) ToBytes() []byte {
+func (r *UnknownErrReply) ToBytes() []byte {
 	return unkownErrReply
 }
 

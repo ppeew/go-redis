@@ -17,3 +17,18 @@
 [INFO][handler.go:86] 2022/10/29 11:44:31 handler shutting down
 [INFO][handler.go:54] 2022/10/29 11:44:31 connection closed: 127.0.0.1:62428
 [INFO][handler.go:86] 2022/10/29 11:44:31 handler shutting down
+[INFO][server.go:27] 2022/10/29 16:21:02 start listener
+[INFO][server.go:42] 2022/10/29 16:21:09 shutting down
+[INFO][handler.go:86] 2022/10/29 16:21:09 handler shutting down
+[INFO][server.go:27] 2022/10/29 16:21:28 start listener
+[INFO][server.go:59] 2022/10/29 16:21:35 accept link
+[INFO][handler.go:54] 2022/10/29 16:21:41 connection closed: 127.0.0.1:52147
+[INFO][server.go:42] 2022/10/29 16:21:53 shutting down
+[INFO][handler.go:86] 2022/10/29 16:21:53 handler shutting down
+[INFO][server.go:27] 2022/10/29 19:43:05 start listener
+[INFO][server.go:59] 2022/10/29 19:50:11 accept link
+[INFO][server.go:59] 2022/10/29 19:50:38 accept link
+[INFO][handler.go:58] 2022/10/29 19:50:52 connection closed: 127.0.0.1:51254
+[INFO][handler.go:66] 2022/10/29 19:51:30 connection closed: 127.0.0.1:51222
+[INFO][server.go:42] 2022/10/29 19:51:47 shutting down
+[INFO][handler.go:90] 2022/10/29 19:51:47 handler shutting down

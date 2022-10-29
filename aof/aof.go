@@ -27,8 +27,8 @@ type payload struct {
 
 // AofHandler receive msgs from channel and write to AOF file
 type AofHandler struct {
-	db          databaseface.Database
 	aofChan     chan *payload
+	db          databaseface.Database
 	aofFile     *os.File
 	aofFilename string
 	currentDB   int
