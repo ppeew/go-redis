@@ -1,0 +1,6 @@
+[INFO][server.go:27] 2022/10/29 10:11:47 start listener
+[INFO][server.go:59] 2022/10/29 10:13:11 accept link
+[INFO][server.go:42] 2022/10/29 10:22:31 shutting down
+[INFO][handler.go:86] 2022/10/29 10:22:31 handler shutting down
+[INFO][handler.go:54] 2022/10/29 10:22:31 connection closed: 127.0.0.1:58947
+[INFO][handler.go:86] 2022/10/29 10:22:31 handler shutting down
